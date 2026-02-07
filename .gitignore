@@ -1,0 +1,11 @@
+.DS_Store
+.gradle/
+build/
+out/
+run/
+.idea/
+*.iml
+
+# Local sibling projects kept in this workspace
+SimpleClaims-RR/
+hytale-template-plugin/
