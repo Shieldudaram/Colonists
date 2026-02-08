@@ -1,0 +1,38 @@
+name: Colonists Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+  push:
+    branches:
+      - dev
+      - 'feature/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  colonists-tests:
+    name: colonists-tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: gradle
+
+      - name: Ensure Gradle wrapper is executable
+        run: chmod +x Colonists/gradlew
+
+      - name: Run Colonists tests
+        working-directory: Colonists
+        run: ./gradlew test --no-daemon
