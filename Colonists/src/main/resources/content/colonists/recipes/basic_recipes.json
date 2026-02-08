@@ -1,0 +1,36 @@
+[
+  {
+    "id": "recipe-wood-planks",
+    "stationType": "workshop",
+    "inputs": [
+      { "id": "wood", "minTier": 1, "minQuality": 1, "qty": 4 }
+    ],
+    "outputs": [
+      { "id": "planks", "tier": 1, "quality": 1, "qty": 2 }
+    ],
+    "craftSeconds": 12
+  },
+  {
+    "id": "recipe-stone-block",
+    "stationType": "workshop",
+    "inputs": [
+      { "id": "stone", "minTier": 1, "minQuality": 1, "qty": 3 }
+    ],
+    "outputs": [
+      { "id": "stone_block", "tier": 1, "quality": 1, "qty": 1 }
+    ],
+    "craftSeconds": 10
+  },
+  {
+    "id": "recipe-herb-pack",
+    "stationType": "workshop",
+    "inputs": [
+      { "id": "herbs", "minTier": 1, "minQuality": 1, "qty": 2 },
+      { "id": "fiber", "minTier": 1, "minQuality": 1, "qty": 1 }
+    ],
+    "outputs": [
+      { "id": "herb_pack", "tier": 1, "quality": 1, "qty": 1 }
+    ],
+    "craftSeconds": 8
+  }
+]

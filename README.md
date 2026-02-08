@@ -1,16 +1,14 @@
-# Colonists
+# Colonists Workspace
 
-`Colonists` is a Hytale singleplayer colony simulation mod focused on autonomous NPC building, farming, logistics, and defense.
+This repository is organized as a local workspace containing multiple mod folders.
 
-## Current scope
+## Colonists implementation
 
-- One persistent colony in the main world.
-- Housing-driven population cap.
-- Autonomous worker priorities with global policy control.
-- Hotspot-based gathering with tier upgrades and timed reset.
-- Mixed-cadence raids targeting the Town Core.
-- Insurance-backed citizen replacement.
+- Active implementation folder: `Colonists/`
+- Design spec: `Colonists/docs/colony-v1.md`
 
-## Design reference
+## Other local mod folders (ignored by this repo)
 
-- See `docs/colony-v1.md` for the current gameplay and systems spec.
+- `SimpleClaims-RR/`
+- `hytale-template-plugin/`
+- `DuelArena/`

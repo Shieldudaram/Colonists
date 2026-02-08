@@ -1,0 +1,178 @@
+[
+  {
+    "id": "hotspot-wood",
+    "family": "wood",
+    "tiers": {
+      "1": { "capacityMax": 120, "resetSeconds": 600, "baseYield": 6, "degradationStep": 0.015, "degradationFloor": 0.4, "minQuality": 1, "maxQuality": 2 },
+      "2": { "capacityMax": 180, "resetSeconds": 480, "baseYield": 8, "degradationStep": 0.01, "degradationFloor": 0.4, "minQuality": 2, "maxQuality": 3 },
+      "3": { "capacityMax": 260, "resetSeconds": 360, "baseYield": 10, "degradationStep": 0.008, "degradationFloor": 0.4, "minQuality": 3, "maxQuality": 5 }
+    },
+    "upgradeCosts": {
+      "1_to_2": [
+        { "id": "wood", "minTier": 1, "minQuality": 1, "qty": 30 },
+        { "id": "stone", "minTier": 1, "minQuality": 1, "qty": 20 },
+        { "id": "fiber", "minTier": 1, "minQuality": 1, "qty": 10 }
+      ],
+      "2_to_3": [
+        { "id": "wood", "minTier": 1, "minQuality": 1, "qty": 50 },
+        { "id": "stone", "minTier": 1, "minQuality": 1, "qty": 35 },
+        { "id": "ore", "minTier": 1, "minQuality": 1, "qty": 20 },
+        { "id": "crystal", "minTier": 1, "minQuality": 1, "qty": 10 }
+      ]
+    }
+  },
+  {
+    "id": "hotspot-stone",
+    "family": "stone",
+    "tiers": {
+      "1": { "capacityMax": 120, "resetSeconds": 600, "baseYield": 6, "degradationStep": 0.015, "degradationFloor": 0.4, "minQuality": 1, "maxQuality": 2 },
+      "2": { "capacityMax": 180, "resetSeconds": 480, "baseYield": 8, "degradationStep": 0.01, "degradationFloor": 0.4, "minQuality": 2, "maxQuality": 3 },
+      "3": { "capacityMax": 260, "resetSeconds": 360, "baseYield": 10, "degradationStep": 0.008, "degradationFloor": 0.4, "minQuality": 3, "maxQuality": 5 }
+    },
+    "upgradeCosts": {
+      "1_to_2": [
+        { "id": "wood", "minTier": 1, "minQuality": 1, "qty": 30 },
+        { "id": "stone", "minTier": 1, "minQuality": 1, "qty": 20 },
+        { "id": "fiber", "minTier": 1, "minQuality": 1, "qty": 10 }
+      ],
+      "2_to_3": [
+        { "id": "wood", "minTier": 1, "minQuality": 1, "qty": 50 },
+        { "id": "stone", "minTier": 1, "minQuality": 1, "qty": 35 },
+        { "id": "ore", "minTier": 1, "minQuality": 1, "qty": 20 },
+        { "id": "crystal", "minTier": 1, "minQuality": 1, "qty": 10 }
+      ]
+    }
+  },
+  {
+    "id": "hotspot-ore",
+    "family": "ore",
+    "tiers": {
+      "1": { "capacityMax": 120, "resetSeconds": 600, "baseYield": 6, "degradationStep": 0.015, "degradationFloor": 0.4, "minQuality": 1, "maxQuality": 2 },
+      "2": { "capacityMax": 180, "resetSeconds": 480, "baseYield": 8, "degradationStep": 0.01, "degradationFloor": 0.4, "minQuality": 2, "maxQuality": 3 },
+      "3": { "capacityMax": 260, "resetSeconds": 360, "baseYield": 10, "degradationStep": 0.008, "degradationFloor": 0.4, "minQuality": 3, "maxQuality": 5 }
+    },
+    "upgradeCosts": {
+      "1_to_2": [
+        { "id": "wood", "minTier": 1, "minQuality": 1, "qty": 30 },
+        { "id": "stone", "minTier": 1, "minQuality": 1, "qty": 20 },
+        { "id": "fiber", "minTier": 1, "minQuality": 1, "qty": 10 }
+      ],
+      "2_to_3": [
+        { "id": "wood", "minTier": 1, "minQuality": 1, "qty": 50 },
+        { "id": "stone", "minTier": 1, "minQuality": 1, "qty": 35 },
+        { "id": "ore", "minTier": 1, "minQuality": 1, "qty": 20 },
+        { "id": "crystal", "minTier": 1, "minQuality": 1, "qty": 10 }
+      ]
+    }
+  },
+  {
+    "id": "hotspot-fiber",
+    "family": "fiber",
+    "tiers": {
+      "1": { "capacityMax": 120, "resetSeconds": 600, "baseYield": 6, "degradationStep": 0.015, "degradationFloor": 0.4, "minQuality": 1, "maxQuality": 2 },
+      "2": { "capacityMax": 180, "resetSeconds": 480, "baseYield": 8, "degradationStep": 0.01, "degradationFloor": 0.4, "minQuality": 2, "maxQuality": 3 },
+      "3": { "capacityMax": 260, "resetSeconds": 360, "baseYield": 10, "degradationStep": 0.008, "degradationFloor": 0.4, "minQuality": 3, "maxQuality": 5 }
+    },
+    "upgradeCosts": {
+      "1_to_2": [
+        { "id": "wood", "minTier": 1, "minQuality": 1, "qty": 30 },
+        { "id": "stone", "minTier": 1, "minQuality": 1, "qty": 20 },
+        { "id": "fiber", "minTier": 1, "minQuality": 1, "qty": 10 }
+      ],
+      "2_to_3": [
+        { "id": "wood", "minTier": 1, "minQuality": 1, "qty": 50 },
+        { "id": "stone", "minTier": 1, "minQuality": 1, "qty": 35 },
+        { "id": "ore", "minTier": 1, "minQuality": 1, "qty": 20 },
+        { "id": "crystal", "minTier": 1, "minQuality": 1, "qty": 10 }
+      ]
+    }
+  },
+  {
+    "id": "hotspot-food",
+    "family": "food",
+    "tiers": {
+      "1": { "capacityMax": 120, "resetSeconds": 600, "baseYield": 6, "degradationStep": 0.015, "degradationFloor": 0.4, "minQuality": 1, "maxQuality": 2 },
+      "2": { "capacityMax": 180, "resetSeconds": 480, "baseYield": 8, "degradationStep": 0.01, "degradationFloor": 0.4, "minQuality": 2, "maxQuality": 3 },
+      "3": { "capacityMax": 260, "resetSeconds": 360, "baseYield": 10, "degradationStep": 0.008, "degradationFloor": 0.4, "minQuality": 3, "maxQuality": 5 }
+    },
+    "upgradeCosts": {
+      "1_to_2": [
+        { "id": "wood", "minTier": 1, "minQuality": 1, "qty": 30 },
+        { "id": "stone", "minTier": 1, "minQuality": 1, "qty": 20 },
+        { "id": "fiber", "minTier": 1, "minQuality": 1, "qty": 10 }
+      ],
+      "2_to_3": [
+        { "id": "wood", "minTier": 1, "minQuality": 1, "qty": 50 },
+        { "id": "stone", "minTier": 1, "minQuality": 1, "qty": 35 },
+        { "id": "ore", "minTier": 1, "minQuality": 1, "qty": 20 },
+        { "id": "crystal", "minTier": 1, "minQuality": 1, "qty": 10 }
+      ]
+    }
+  },
+  {
+    "id": "hotspot-hide",
+    "family": "hide",
+    "tiers": {
+      "1": { "capacityMax": 120, "resetSeconds": 600, "baseYield": 6, "degradationStep": 0.015, "degradationFloor": 0.4, "minQuality": 1, "maxQuality": 2 },
+      "2": { "capacityMax": 180, "resetSeconds": 480, "baseYield": 8, "degradationStep": 0.01, "degradationFloor": 0.4, "minQuality": 2, "maxQuality": 3 },
+      "3": { "capacityMax": 260, "resetSeconds": 360, "baseYield": 10, "degradationStep": 0.008, "degradationFloor": 0.4, "minQuality": 3, "maxQuality": 5 }
+    },
+    "upgradeCosts": {
+      "1_to_2": [
+        { "id": "wood", "minTier": 1, "minQuality": 1, "qty": 30 },
+        { "id": "stone", "minTier": 1, "minQuality": 1, "qty": 20 },
+        { "id": "fiber", "minTier": 1, "minQuality": 1, "qty": 10 }
+      ],
+      "2_to_3": [
+        { "id": "wood", "minTier": 1, "minQuality": 1, "qty": 50 },
+        { "id": "stone", "minTier": 1, "minQuality": 1, "qty": 35 },
+        { "id": "ore", "minTier": 1, "minQuality": 1, "qty": 20 },
+        { "id": "crystal", "minTier": 1, "minQuality": 1, "qty": 10 }
+      ]
+    }
+  },
+  {
+    "id": "hotspot-herbs",
+    "family": "herbs",
+    "tiers": {
+      "1": { "capacityMax": 120, "resetSeconds": 600, "baseYield": 6, "degradationStep": 0.015, "degradationFloor": 0.4, "minQuality": 1, "maxQuality": 2 },
+      "2": { "capacityMax": 180, "resetSeconds": 480, "baseYield": 8, "degradationStep": 0.01, "degradationFloor": 0.4, "minQuality": 2, "maxQuality": 3 },
+      "3": { "capacityMax": 260, "resetSeconds": 360, "baseYield": 10, "degradationStep": 0.008, "degradationFloor": 0.4, "minQuality": 3, "maxQuality": 5 }
+    },
+    "upgradeCosts": {
+      "1_to_2": [
+        { "id": "wood", "minTier": 1, "minQuality": 1, "qty": 30 },
+        { "id": "stone", "minTier": 1, "minQuality": 1, "qty": 20 },
+        { "id": "fiber", "minTier": 1, "minQuality": 1, "qty": 10 }
+      ],
+      "2_to_3": [
+        { "id": "wood", "minTier": 1, "minQuality": 1, "qty": 50 },
+        { "id": "stone", "minTier": 1, "minQuality": 1, "qty": 35 },
+        { "id": "ore", "minTier": 1, "minQuality": 1, "qty": 20 },
+        { "id": "crystal", "minTier": 1, "minQuality": 1, "qty": 10 }
+      ]
+    }
+  },
+  {
+    "id": "hotspot-crystal",
+    "family": "crystal",
+    "tiers": {
+      "1": { "capacityMax": 120, "resetSeconds": 600, "baseYield": 6, "degradationStep": 0.015, "degradationFloor": 0.4, "minQuality": 1, "maxQuality": 2 },
+      "2": { "capacityMax": 180, "resetSeconds": 480, "baseYield": 8, "degradationStep": 0.01, "degradationFloor": 0.4, "minQuality": 2, "maxQuality": 3 },
+      "3": { "capacityMax": 260, "resetSeconds": 360, "baseYield": 10, "degradationStep": 0.008, "degradationFloor": 0.4, "minQuality": 3, "maxQuality": 5 }
+    },
+    "upgradeCosts": {
+      "1_to_2": [
+        { "id": "wood", "minTier": 1, "minQuality": 1, "qty": 30 },
+        { "id": "stone", "minTier": 1, "minQuality": 1, "qty": 20 },
+        { "id": "fiber", "minTier": 1, "minQuality": 1, "qty": 10 }
+      ],
+      "2_to_3": [
+        { "id": "wood", "minTier": 1, "minQuality": 1, "qty": 50 },
+        { "id": "stone", "minTier": 1, "minQuality": 1, "qty": 35 },
+        { "id": "ore", "minTier": 1, "minQuality": 1, "qty": 20 },
+        { "id": "crystal", "minTier": 1, "minQuality": 1, "qty": 10 }
+      ]
+    }
+  }
+]

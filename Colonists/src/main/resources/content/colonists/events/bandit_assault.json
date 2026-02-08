@@ -1,0 +1,17 @@
+[
+  {
+    "id": "event-bandit-assault",
+    "type": "crisis",
+    "trigger": {
+      "conditions": [
+        "command=bandit_assault"
+      ],
+      "cooldownSeconds": 300
+    },
+    "effects": [
+      "spawn_bandit_raid",
+      "target_town_core",
+      "increase_threat_8"
+    ]
+  }
+]

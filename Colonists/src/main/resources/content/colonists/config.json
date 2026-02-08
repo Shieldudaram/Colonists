@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "sim": {
+    "tickHz": 5,
+    "aiStaggerEnabled": true,
+    "aiAgentsPerTick": 2,
+    "pathReplanIntervalMs": 1000
+  },
+  "limits": {
+    "maxCitizens": 5,
+    "maxHotspotsPerFamily": 1,
+    "maxActiveRaidEnemies": 1,
+    "hotspotSpacingMeters": 12,
+    "hotspotPerZoneCap": 2
+  },
+  "time": {
+    "dayLengthMinutes": 24,
+    "workStartHour": 6,
+    "workEndHour": 20,
+    "sleepStartHour": 22,
+    "sleepEndHour": 6
+  },
+  "save": {
+    "autosaveSeconds": 300,
+    "backupRotations": 5
+  },
+  "threat": {
+    "graceSeconds": 1800,
+    "baseIntervalSeconds": 900,
+    "triggerCooldownSeconds": 480
+  }
+}
