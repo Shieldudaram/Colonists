@@ -1,0 +1,11 @@
+[
+  {
+    "id": "faction-bandits",
+    "units": [
+      "bandit_raider"
+    ],
+    "targetPriority": [
+      "TownCore"
+    ]
+  }
+]

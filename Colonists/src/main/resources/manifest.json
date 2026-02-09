@@ -1,0 +1,18 @@
+{
+  "Group": "Shieldudaram",
+  "Name": "Colonists",
+  "Version": "${version}",
+  "Description": "Colony simulation systems and commands for Realm Ruler worlds.",
+  "Authors": [
+    {
+      "Name": "Shieldudaram"
+    }
+  ],
+  "Website": "",
+  "ServerVersion": "*",
+  "Dependencies": {},
+  "OptionalDependencies": {},
+  "DisabledByDefault": false,
+  "Main": "${entry_point}",
+  "IncludesAssetPack": true
+}

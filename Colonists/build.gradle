@@ -1,0 +1,160 @@
+plugins {
+    id 'java'
+}
+
+import org.gradle.api.file.DuplicatesStrategy
+import org.gradle.internal.os.OperatingSystem
+
+group = project.findProperty('group')
+version = project.findProperty('version')
+
+def patchline = (project.findProperty('patchline') ?: 'release').toString()
+def entryPoint = 'com.shieldudaram.colonists.plugin.ColonistsPlugin'
+
+def resolveHytaleHomePath = {
+    def explicitHome = project.findProperty('hytale_home')
+    if (explicitHome == null || String.valueOf(explicitHome).trim().isEmpty()) {
+        explicitHome = project.findProperty('hytaleHome')
+    }
+    if (explicitHome != null && !String.valueOf(explicitHome).trim().isEmpty()) {
+        return String.valueOf(explicitHome).trim()
+    }
+
+    def userHome = System.getProperty('user.home')
+    def os = OperatingSystem.current()
+    if (os.isWindows()) {
+        return "${userHome}/AppData/Roaming/Hytale"
+    }
+    if (os.isMacOsX()) {
+        return "${userHome}/Library/Application Support/Hytale"
+    }
+    if (os.isLinux()) {
+        def flatpakHome = "${userHome}/.var/app/com.hypixel.HytaleLauncher/data/Hytale"
+        if (file(flatpakHome).exists()) {
+            return flatpakHome
+        }
+        return "${userHome}/.local/share/Hytale"
+    }
+    return null
+}
+
+def hytaleHomePath = resolveHytaleHomePath()
+def hytaleHomeDir = (hytaleHomePath == null) ? null : file(hytaleHomePath)
+def hytaleModsDir = (hytaleHomeDir == null) ? null : file("${hytaleHomePath}/UserData/Mods")
+def hytaleServerJar = (hytaleHomePath == null) ? null : file("${hytaleHomePath}/install/${patchline}/package/game/latest/Server/HytaleServer.jar")
+def canBuildHytaleJar = (hytaleServerJar != null && hytaleServerJar.exists())
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(project.findProperty('java_version').toString().toInteger())
+    withSourcesJar()
+}
+
+sourceSets {
+    hytale {
+        java.srcDir('src/hytale/java')
+        compileClasspath += sourceSets.main.output + configurations.hytaleCompileClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
+    hytaleCompileOnly fileTree(dir: 'libs', include: ['*.jar'])
+    if (hytaleServerJar != null) {
+        hytaleCompileOnly files(hytaleServerJar)
+    }
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.11.4'
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+}
+
+tasks.named('processResources') {
+    def manifestProps = [
+            version    : project.version.toString(),
+            entry_point: entryPoint
+    ]
+    filesMatching('manifest.json') {
+        expand(manifestProps)
+    }
+    inputs.properties(manifestProps)
+}
+
+tasks.register('verifyHytaleServerJar') {
+    doLast {
+        if (hytaleServerJar == null || !hytaleServerJar.exists()) {
+            throw new GradleException(
+                    "[Colonists] Could not find HytaleServer.jar. " +
+                            "Set -Phytale_home=... (or -PhytaleHome=...) to your Hytale install directory."
+            )
+        }
+    }
+}
+
+tasks.named('compileHytaleJava') {
+    dependsOn tasks.named('verifyHytaleServerJar')
+}
+
+tasks.register('hytaleJar', Jar) {
+    group = 'build'
+    description = 'Builds the plugin-ready Colonists jar (core + Hytale adapter + runtime deps).'
+    archiveClassifier.set('hytale')
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    dependsOn tasks.named('classes')
+    dependsOn tasks.named('hytaleClasses')
+
+    from(sourceSets.main.output)
+    from(sourceSets.hytale.output)
+    from({
+        configurations.runtimeClasspath.collect { dependency ->
+            dependency.isDirectory() ? dependency : zipTree(dependency)
+        }
+    }) {
+        exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
+    }
+}
+
+tasks.register('installToHytaleMods', Copy) {
+    if (canBuildHytaleJar) {
+        dependsOn tasks.named('hytaleJar')
+        from(tasks.named('hytaleJar').flatMap { it.archiveFile }) {
+            rename { "${project.name}-${project.version}.jar" }
+        }
+    }
+    into(layout.buildDirectory.dir('tmp/installToHytaleMods-noop'))
+
+    onlyIf {
+        if (hytaleHomeDir == null) {
+            logger.lifecycle("[Colonists] installToHytaleMods skipped: could not resolve Hytale home. Set -Phytale_home=... or -PhytaleHome=...")
+            return false
+        }
+        if (!hytaleHomeDir.exists()) {
+            logger.lifecycle("[Colonists] installToHytaleMods skipped: Hytale home does not exist at ${hytaleHomeDir}")
+            return false
+        }
+        if (!canBuildHytaleJar) {
+            logger.lifecycle("[Colonists] installToHytaleMods skipped: HytaleServer.jar not found at ${hytaleServerJar}")
+            return false
+        }
+        return true
+    }
+
+    doFirst {
+        if (!hytaleModsDir.exists()) {
+            hytaleModsDir.mkdirs()
+        }
+        into(hytaleModsDir)
+        logger.lifecycle("[Colonists] installToHytaleMods -> ${hytaleModsDir}")
+    }
+}
+
+tasks.named('build') {
+    finalizedBy 'installToHytaleMods'
+}
