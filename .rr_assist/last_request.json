@@ -1,0 +1,23 @@
+{
+  "ts": "2026-02-10T08:42:36.161179",
+  "mode": "debug",
+  "model": "gpt-5.1",
+  "effort": "none",
+  "prompt": "can you follow through with the plan? do you have any questions or need anything from me to do that?",
+  "repo_root": "/workspace",
+  "files": [
+    "Colonists/.gitignore",
+    "docker-compose.yml",
+    "patch.diff",
+    "README.md"
+  ],
+  "grep": [],
+  "diff_included": false,
+  "budget": {
+    "max_files": 30,
+    "max_file_chars": 20000,
+    "max_total_chars": 120000,
+    "max_grep_chars": 20000
+  },
+  "notes": []
+}
