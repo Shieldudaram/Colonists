@@ -1,9 +1,0 @@
-{
-  "Parent": "Env_Zone3",
-  "SpawnDensity": 30,
-  "Tags": {
-    "Zone3": [
-      "Shores"
-    ]
-  }
-}
