@@ -12,7 +12,9 @@ This repository is organized as a local workspace containing multiple mod folder
 - `SimpleClaims-RR/`
 - `hytale-template-plugin/`
 - `DuelArena/`
+- `fight-caves/` (standalone repo: https://github.com/Shieldudaram/fight-caves)
 - `devkit/` (standalone repo: https://github.com/Shieldudaram/Devkit)
+- `CustomTree/` (standalone repo: https://github.com/Shieldudaram/CustomTree)
 
 ## Build All Mods
 

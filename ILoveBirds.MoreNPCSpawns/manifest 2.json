@@ -1,0 +1,20 @@
+{
+  "Group": "ILoveBirds",
+  "Name": "MoreNPCSpawns",
+  "Version": "1.0.0",
+  "Description": "Increases NPC spawns (including caves but excluding oceans)",
+  "Authors": [
+    {
+      "Name": "ILoveBirds",
+      "Email": "",
+      "Url": ""
+    }
+  ],
+  "Website": "",
+  "Dependencies": {},
+  "OptionalDependencies": {},
+  "LoadBefore": {},
+  "DisabledByDefault": false,
+  "IncludesAssetPack": false,
+  "SubPlugins": []
+}
