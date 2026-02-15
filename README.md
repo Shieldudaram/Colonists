@@ -12,6 +12,7 @@ This repository tracks Colonists ownership and release flow.
 - Tracked mod ownership in this repository is focused on Colonists.
 - External sibling repos can exist in the same local workspace, but they are not tracked here.
 - `fight-caves/` is maintained in its own repository: https://github.com/Shieldudaram/fight-caves
+- `hytalecraft/` is maintained in its own repository: https://github.com/Shieldudaram/hytalecraft-RR
 
 ## Build Tooling
 

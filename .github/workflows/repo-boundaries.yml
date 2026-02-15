@@ -95,6 +95,28 @@ jobs:
 
           echo "OK: no fight-caves ownership violations found."
 
+  hytalecraft-boundary:
+    name: hytalecraft-boundary
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure hytalecraft ownership stays external
+        run: |
+          set -euo pipefail
+          matches="$(git ls-files | grep -E '^hytalecraft/' || true)"
+
+          if [ -n "$matches" ]; then
+            echo "ERROR: hytalecraft paths must not be tracked in Shieldudaram/Colonists."
+            echo "$matches"
+            echo "Remediation: git rm -r --cached hytalecraft"
+            echo "Then ensure .gitignore includes: hytalecraft/"
+            exit 1
+          fi
+
+          echo "OK: no hytalecraft ownership violations found."
+
   scripts-boundary:
     name: scripts-boundary
     runs-on: ubuntu-latest
