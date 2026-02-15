@@ -51,6 +51,50 @@ jobs:
 
           echo "OK: no devkit ownership violations found."
 
+  colbee-loot-boundary:
+    name: colbee-loot-boundary
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure Colbee's Loot ownership stays external
+        run: |
+          set -euo pipefail
+          matches="$(git ls-files | grep -E "^Colbee\\.Colbee's Loot/" || true)"
+
+          if [ -n "$matches" ]; then
+            echo "ERROR: Colbee.Colbee's Loot paths must not be tracked in Shieldudaram/Colonists."
+            echo "$matches"
+            echo "Remediation: git rm -r --cached \"Colbee.Colbee's Loot\""
+            echo "Then ensure .gitignore includes: Colbee.Colbee's Loot/"
+            exit 1
+          fi
+
+          echo "OK: no Colbee.Colbee's Loot ownership violations found."
+
+  fight-caves-boundary:
+    name: fight-caves-boundary
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure fight-caves ownership stays external
+        run: |
+          set -euo pipefail
+          matches="$(git ls-files | grep -E '^fight-caves/' || true)"
+
+          if [ -n "$matches" ]; then
+            echo "ERROR: fight-caves paths must not be tracked in Shieldudaram/Colonists."
+            echo "$matches"
+            echo "Remediation: git rm -r --cached fight-caves"
+            echo "Then ensure .gitignore includes: fight-caves/"
+            exit 1
+          fi
+
+          echo "OK: no fight-caves ownership violations found."
+
   scripts-boundary:
     name: scripts-boundary
     runs-on: ubuntu-latest

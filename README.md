@@ -1,20 +1,17 @@
 # Colonists Workspace
 
-This repository is organized as a local workspace containing multiple mod folders.
+This repository tracks Colonists ownership and release flow.
 
 ## Colonists implementation
 
 - Active implementation folder: `Colonists/`
 - Design spec: `Colonists/docs/colony-v1.md`
 
-## Other local mod folders (ignored by this repo)
+## Repository Boundaries
 
-- `SimpleClaims-RR/`
-- `hytale-template-plugin/`
-- `DuelArena/`
-- `fight-caves/` (standalone repo: https://github.com/Shieldudaram/fight-caves)
-- `devkit/` (standalone repo: https://github.com/Shieldudaram/Devkit)
-- `CustomTree/` (standalone repo: https://github.com/Shieldudaram/CustomTree)
+- Tracked mod ownership in this repository is focused on Colonists.
+- External sibling repos can exist in the same local workspace, but they are not tracked here.
+- `fight-caves/` is maintained in its own repository: https://github.com/Shieldudaram/fight-caves
 
 ## Build Tooling
 
