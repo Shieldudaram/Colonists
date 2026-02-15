@@ -14,6 +14,7 @@ This repository is organized as a local workspace containing multiple mod folder
 - `DuelArena/`
 - `fight-caves/` (standalone repo: https://github.com/Shieldudaram/fight-caves)
 - `devkit/` (standalone repo: https://github.com/Shieldudaram/Devkit)
+- `CustomTree/` (standalone repo: https://github.com/Shieldudaram/CustomTree)
 
 ## Shared Scripts Repo
 
