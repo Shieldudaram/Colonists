@@ -117,6 +117,27 @@ jobs:
 
           echo "OK: no hytalecraft ownership violations found."
 
+  docker-boundary:
+    name: docker-boundary
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure docker tooling is local-only
+        run: |
+          set -euo pipefail
+          matches="$(git ls-files | grep -E '^docker/|^docker-compose\.yml$|^docker-compose 2\.yml$' || true)"
+
+          if [ -n "$matches" ]; then
+            echo "ERROR: docker tooling must not be tracked in Shieldudaram/Colonists."
+            echo "$matches"
+            echo "Remediation: git rm -r --cached docker && git rm --cached docker-compose.yml"
+            exit 1
+          fi
+
+          echo "OK: no docker ownership violations found."
+
   scripts-boundary:
     name: scripts-boundary
     runs-on: ubuntu-latest

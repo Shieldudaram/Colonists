@@ -18,8 +18,6 @@ run/
 !/.github/**
 !/Colonists/
 !/Colonists/**
-!/docker/
-!/docker/**
 
 # Explicit sibling repo/workspace ignores for readability
 SimpleClaims-RR/
@@ -32,3 +30,8 @@ devkit/
 CustomTree/
 Colbee.Colbee's Loot/
 scripts/
+
+# Local-only Docker tooling (not tracked in this repo)
+docker/
+docker-compose.yml
+docker-compose 2.yml
