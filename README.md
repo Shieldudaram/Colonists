@@ -15,6 +15,20 @@ This repository is organized as a local workspace containing multiple mod folder
 - `fight-caves/` (standalone repo: https://github.com/Shieldudaram/fight-caves)
 - `devkit/` (standalone repo: https://github.com/Shieldudaram/Devkit)
 
+## Shared Scripts Repo
+
+Shared workspace scripts are maintained in the standalone repository:
+
+- `https://github.com/Shieldudaram/scripts`
+
+Expected local checkout path from this workspace root:
+
+- `./scripts/`
+
+If missing, clone it:
+
+- `git clone https://github.com/Shieldudaram/scripts ./scripts`
+
 ## Build All Mods
 
 Use one command to build all Gradle-based mods in this workspace:

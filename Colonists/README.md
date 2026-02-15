@@ -2,6 +2,8 @@
 
 This folder contains the implementation of the Colonists colony-simulation mod.
 
+Fight Caves now lives in its own repository: https://github.com/Shieldudaram/fight-caves
+
 ## Structure
 
 - `src/main/java` - core runtime, systems, command router, save/content loaders
@@ -67,9 +69,12 @@ From this folder:
 - `jar tf "$HOME/Library/Application Support/Hytale/UserData/Mods/colonists-<version>-hytale.jar" | rg 'ColonistsPlugin.class|manifest.json'`
 - `rg -n 'Colonists|Failed to load plugin|ClassNotFoundException' "$HOME/Library/Application Support/Hytale/UserData/Saves/TestWorld/logs"/*.log | tail -n 40`
 
-From the workspace root (cross-module sanity check):
+From the workspace root (Colonists install sanity + module boundaries):
+
+Prerequisite: ensure `./scripts/` is checked out from `https://github.com/Shieldudaram/scripts`.
 
 - `./scripts/verify-hytale-mod-install.sh`
+- `./scripts/verify-module-boundaries.sh`
 
 ## Quick Smoke Test
 
