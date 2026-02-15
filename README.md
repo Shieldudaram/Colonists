@@ -12,6 +12,7 @@ This repository is organized as a local workspace containing multiple mod folder
 - `SimpleClaims-RR/`
 - `hytale-template-plugin/`
 - `DuelArena/`
+- `devkit/` (standalone repo: https://github.com/Shieldudaram/Devkit)
 
 ## Build All Mods
 
