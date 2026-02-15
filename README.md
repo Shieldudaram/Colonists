@@ -33,3 +33,4 @@ Common usage:
   - `./scripts/build-all-mods.sh --require-hytale false`
 - Preview actions without running:
   - `./scripts/build-all-mods.sh --dry-run`
+- `CustomTree/` (standalone repo: https://github.com/Shieldudaram/CustomTree)
