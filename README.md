@@ -16,21 +16,11 @@ This repository is organized as a local workspace containing multiple mod folder
 - `devkit/` (standalone repo: https://github.com/Shieldudaram/Devkit)
 - `CustomTree/` (standalone repo: https://github.com/Shieldudaram/CustomTree)
 
-## Build All Mods
+## Build Tooling
 
-Use one command to build all Gradle-based mods in this workspace:
+Shared workspace scripts are intentionally not tracked in this repository.
 
-- `./scripts/build-all-mods.sh`
+For Colonists builds and validation, run commands from `Colonists/`:
 
-Common usage:
-
-- Build only selected modules:
-  - `./scripts/build-all-mods.sh --module DuelArena --module hytalecraft`
-- Skip a module:
-  - `./scripts/build-all-mods.sh --skip SimpleClaims-RR`
-- Override Hytale install path:
-  - `./scripts/build-all-mods.sh --hytale-home "$HOME/Library/Application Support/Hytale"`
-- CI-style (do not require local Hytale install):
-  - `./scripts/build-all-mods.sh --require-hytale false`
-- Preview actions without running:
-  - `./scripts/build-all-mods.sh --dry-run`
+- `./gradlew test`
+- `./gradlew jar hytaleJar installToHytaleMods verifyInstalledModJar`

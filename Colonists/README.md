@@ -67,9 +67,7 @@ From this folder:
 - `jar tf "$HOME/Library/Application Support/Hytale/UserData/Mods/colonists-<version>-hytale.jar" | rg 'ColonistsPlugin.class|manifest.json'`
 - `rg -n 'Colonists|Failed to load plugin|ClassNotFoundException' "$HOME/Library/Application Support/Hytale/UserData/Saves/TestWorld/logs"/*.log | tail -n 40`
 
-From the workspace root (cross-module sanity check):
-
-- `./scripts/verify-hytale-mod-install.sh`
+Cross-module workspace verification scripts are maintained outside this repository.
 
 ## Quick Smoke Test
 
