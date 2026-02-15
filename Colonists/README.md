@@ -16,11 +16,14 @@ This folder contains the implementation of the Colonists colony-simulation mod.
 Run from this folder:
 
 - `./gradlew test`
-- `./gradlew hytaleJar installToHytaleMods`
+- `./gradlew jar hytaleJar installToHytaleMods verifyInstalledModJar`
 
-The install task copies the plugin-ready jar to your local Hytale mods folder as:
+Artifact outputs:
 
-- `UserData/Mods/colonists-<version>.jar`
+- `build/libs/colonists-<version>-core.jar` (core-only, not for Mods folder)
+- `build/libs/colonists-<version>-hytale.jar` (plugin runtime jar for Mods folder)
+
+The install task copies only the `-hytale.jar` artifact to your local Hytale mods folder and removes legacy non-hytale jars for this module.
 
 ## Plugin Metadata
 
@@ -56,6 +59,17 @@ Colonists writes runtime files under the plugin data directory provided by Hytal
 - `/colony zone clear <zoneId>`
 - `/colony crisis start bandit_assault`
 - `/colony telemetry <brief|full|off>`
+
+## Runtime Verification
+
+From this folder:
+
+- `jar tf "$HOME/Library/Application Support/Hytale/UserData/Mods/colonists-<version>-hytale.jar" | rg 'ColonistsPlugin.class|manifest.json'`
+- `rg -n 'Colonists|Failed to load plugin|ClassNotFoundException' "$HOME/Library/Application Support/Hytale/UserData/Saves/TestWorld/logs"/*.log | tail -n 40`
+
+From the workspace root (cross-module sanity check):
+
+- `./scripts/verify-hytale-mod-install.sh`
 
 ## Quick Smoke Test
 

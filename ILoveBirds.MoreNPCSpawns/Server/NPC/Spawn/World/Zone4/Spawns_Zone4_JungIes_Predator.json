@@ -1,0 +1,55 @@
+{
+  "Environments": [
+    "Env_Zone4_Jungles"
+  ],
+  "NPCs": [
+    {
+      "Weight": 30,
+      "SpawnBlockSet": "Soil",
+      "Id": "Rex_Cave",
+      "Flock": {
+        "Size": [
+          1,
+          3
+        ]
+      }
+    },
+    {
+      "Weight": 50,
+      "SpawnBlockSet": "Soil",
+      "Id": "Raptor_Cave",
+      "Flock": {
+        "Size": [
+          4,
+          6
+        ]
+      }
+    },
+    {
+      "Weight": 20,
+      "SpawnBlockSet": "Soil",
+      "Id": "Snapdragon",
+      "Flock": {
+        "Size": [
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "Weight": 30,
+      "SpawnBlockSet": "Soil",
+      "Id": "Pterodactyl",
+      "Flock": {
+        "Size": [
+          3,
+          4
+        ]
+      }
+    }
+  ],
+  "DayTimeRange": [
+    6,
+    18
+  ]
+}

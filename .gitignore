@@ -6,6 +6,11 @@ run/
 .idea/
 *.iml
 
+# ignore a file
+.env
+.rr_assist_global/
+
+
 # Local sibling projects kept in this workspace
 SimpleClaims-RR/
 hytale-template-plugin/

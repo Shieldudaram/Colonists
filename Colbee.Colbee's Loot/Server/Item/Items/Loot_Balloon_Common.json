@@ -1,0 +1,58 @@
+{
+  "Icon": "Icons/ItemsGenerated/Loot_Balloon_Common.png",
+  "Model": "Items/Loot_Bucket.blockymodel",
+  "Texture": "Items/Balloon_Bucket_Texture.png",
+  "Scale": 1,
+  "PlayerAnimationsId": "Item",
+  "TranslationProperties": {
+    "Name": "loot_bags.Common_Loot_Bag.name",
+    "Description": "loot_bags.Common_Loot_Bag.desc"
+  },
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "SpawnNPC",
+          "EntityId": "Loot_Balloon_Entity_Common",
+          "SpawnOffset": {
+            "Y": 20
+          },
+          "Next": {
+            "Type": "ModifyInventory",
+            "ItemToRemove": {
+              "Id": "Loot_Balloon_Common"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "Recipe": {
+    "Input": [
+      {
+        "ItemId": "Ingredient_Hide_Light",
+        "Quantity": 3
+      },
+      {
+        "ItemId": "Ingredient_Poop"
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Type": "Crafting",
+        "Id": "Workbench",
+        "Categories": [
+          "Workbench_Tinkering"
+        ]
+      }
+    ],
+    "TimeSeconds": 3
+  },
+  "IconProperties": {
+    "Scale": 0.3,
+    "Translation": [
+      -8,
+      -43
+    ]
+  }
+}

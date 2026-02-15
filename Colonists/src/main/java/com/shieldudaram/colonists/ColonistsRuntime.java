@@ -2,6 +2,7 @@ package com.shieldudaram.colonists;
 
 import com.shieldudaram.colonists.commands.ColonyCommandRouter;
 import com.shieldudaram.colonists.commands.CommandResult;
+import com.shieldudaram.colonists.content.ColonistsConfig;
 import com.shieldudaram.colonists.content.ConfigLoader;
 import com.shieldudaram.colonists.content.ContentPackValidator;
 import com.shieldudaram.colonists.sim.ColonyCallbacks;
@@ -32,12 +33,13 @@ public final class ColonistsRuntime {
         Path saveDir = root.resolve("saves/colonists");
         Path configPath = root.resolve("config/colonists-config.json");
         Path contentRoot = root.resolve("content/colonists");
+        ColonistsConfig config = bootstrapConfig(configPath);
+        boolean autosaveEnabled = (config.save == null) || config.save.autosaveEnabled;
 
         this.engine = new ColonySimulationEngine(logsDir, saveDir, new ColonyCallbacks() {
-        });
+        }, autosaveEnabled);
         this.commandRouter = new ColonyCommandRouter(engine);
 
-        bootstrapConfig(configPath);
         bootstrapContent(contentRoot);
         validateContent(contentRoot);
     }
@@ -54,11 +56,18 @@ public final class ColonistsRuntime {
         engine.tick();
     }
 
-    private void bootstrapConfig(Path configPath) {
+    private ColonistsConfig bootstrapConfig(Path configPath) {
         ConfigLoader loader = new ConfigLoader();
         try {
             loader.writeDefault(configPath);
-            loader.load(configPath);
+            ColonistsConfig config = loader.load(configPath);
+            if (config == null) {
+                return new ColonistsConfig();
+            }
+            if (config.save == null) {
+                config.save = new ColonistsConfig.Save();
+            }
+            return config;
         } catch (IOException exception) {
             throw new IllegalStateException("Failed to initialize config", exception);
         }

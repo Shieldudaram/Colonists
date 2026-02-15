@@ -1,0 +1,40 @@
+{
+  "Environments": [
+    "Env_Zone1_Caves_Plains"
+  ],
+  "MinDistanceFromPlayer": 15,
+  "MaxSpawnedNPCs": 15,
+  "ConcurrentSpawnsRange": [
+    2,
+    4
+  ],
+  "SpawnAfterGameTimeRange": [
+    "PT20M",
+    "PT30M"
+  ],
+  "NPCIdleDespawnTime": 25,
+  "BeaconVacantDespawnGameTime": "PT15M",
+  "BeaconRadius": 70,
+  "SpawnRadius": 50,
+  "TargetDistanceFromPlayer": 20,
+  "NPCs": [
+    {
+      "Weight": 8,
+      "Id": "Rat"
+    },
+    {
+      "Weight": 5,
+      "Id": "Goblin_Scrapper"
+    },
+    {
+      "Weight": 5,
+      "Id": "Goblin_Miner"
+    }
+  ],
+  "LightRanges": {
+    "Light": [
+      0,
+      2
+    ]
+  }
+}
