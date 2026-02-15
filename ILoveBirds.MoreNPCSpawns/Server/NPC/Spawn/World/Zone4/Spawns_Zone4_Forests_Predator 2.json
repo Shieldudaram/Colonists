@@ -1,0 +1,44 @@
+{
+  "Environments": [
+    "Env_Zone4_Forests"
+  ],
+  "NPCs": [
+    {
+      "Weight": 10,
+      "SpawnBlockSet": "Soil",
+      "Id": "Spark_Living",
+      "Flock": {
+        "Size": [
+          1,
+          3
+        ]
+      }
+    },
+    {
+      "Weight": 20,
+      "SpawnBlockSet": "Soil",
+      "Id": "Skeleton_Incandescent_Head",
+      "Flock": {
+        "Size": [
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "Weight": 40,
+      "SpawnBlockSet": "Soil",
+      "Id": "Hound_Bleached",
+      "Flock": {
+        "Size": [
+          3,
+          5
+        ]
+      }
+    }
+  ],
+  "DayTimeRange": [
+    6,
+    18
+  ]
+}
