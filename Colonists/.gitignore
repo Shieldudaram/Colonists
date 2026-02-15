@@ -1,1 +1,11 @@
+.DS_Store
+.gradle/
+build/
+out/
+run/
+.idea/
+.vscode/
+*.iml
+.env
 .rr_assist/
+.rr_assist_global/
