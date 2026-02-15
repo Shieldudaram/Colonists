@@ -1,0 +1,44 @@
+{
+  "Environments": [
+    "Env_Zone1_Caves_Swamps"
+  ],
+  "MinDistanceFromPlayer": 15,
+  "MaxSpawnedNPCs": 15,
+  "ConcurrentSpawnsRange": [
+    2,
+    3
+  ],
+  "SpawnAfterGameTimeRange": [
+    "PT20M",
+    "PT60M"
+  ],
+  "NPCIdleDespawnTime": 25,
+  "BeaconVacantDespawnGameTime": "PT15M",
+  "BeaconRadius": 70,
+  "SpawnRadius": 50,
+  "TargetDistanceFromPlayer": 20,
+  "NPCs": [
+    {
+      "Weight": 35,
+      "Id": "Spider_Cave"
+    },
+    {
+      "Weight": 45,
+      "Id": "Rat"
+    },
+    {
+      "Weight": 50,
+      "Id": "Goblin_Scrapper"
+    },
+    {
+      "Weight": 35,
+      "Id": "Goblin_Miner"
+    }
+  ],
+  "LightRanges": {
+    "Light": [
+      0,
+      2
+    ]
+  }
+}

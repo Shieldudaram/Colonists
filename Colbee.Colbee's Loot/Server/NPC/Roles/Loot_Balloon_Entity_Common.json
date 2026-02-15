@@ -1,0 +1,31 @@
+{
+  "Type": "Generic",
+  "Appearance": "Loot_Balloon_Common_Model",
+  "HotbarItems": [],
+  "MotionControllerList": [
+    {
+      "Type": "Walk",
+      "MaxWalkSpeed": 3,
+      "Gravity": 0.2,
+      "MaxFallSpeed": 2,
+      "Acceleration": 10
+    }
+  ],
+  "MaxHealth": {
+    "Compute": "MaxHealth"
+  },
+  "DropList": "Epic_Loot_Bag_Loot",
+  "Parameters": {
+    "MaxHealth": {
+      "Value": 1
+    }
+  },
+  "Instructions": [
+    {
+      "Instructions": [
+        {}
+      ]
+    }
+  ],
+  "NameTranslationKey": "loot_bags.Epic_Loot_Bag.name"
+}

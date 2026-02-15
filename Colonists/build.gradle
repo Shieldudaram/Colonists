@@ -4,6 +4,7 @@ plugins {
 
 import org.gradle.api.file.DuplicatesStrategy
 import org.gradle.internal.os.OperatingSystem
+import java.util.jar.JarFile
 
 group = project.findProperty('group')
 version = project.findProperty('version')
@@ -76,6 +77,10 @@ tasks.withType(Test).configureEach {
     useJUnitPlatform()
 }
 
+tasks.named('jar') {
+    archiveClassifier.set('core')
+}
+
 tasks.named('processResources') {
     def manifestProps = [
             version    : project.version.toString(),
@@ -85,6 +90,35 @@ tasks.named('processResources') {
         expand(manifestProps)
     }
     inputs.properties(manifestProps)
+}
+
+def readMainClassFromJar = { File jarFile ->
+    JarFile jar = new JarFile(jarFile)
+    try {
+        def entry = jar.getJarEntry('manifest.json')
+        if (entry == null) {
+            throw new GradleException("[Colonists] manifest.json missing in ${jarFile.name}")
+        }
+        def manifestText = jar.getInputStream(entry).getText('UTF-8')
+        def parsed = new groovy.json.JsonSlurper().parseText(manifestText)
+        def mainClass = String.valueOf(parsed?.Main ?: '').trim()
+        if (mainClass.isEmpty()) {
+            throw new GradleException("[Colonists] Main class is missing in manifest.json for ${jarFile.name}")
+        }
+        return mainClass
+    } finally {
+        jar.close()
+    }
+}
+
+def jarContainsClass = { File jarFile, String fqcn ->
+    JarFile jar = new JarFile(jarFile)
+    try {
+        def classPath = fqcn.replace('.', '/') + '.class'
+        return jar.getJarEntry(classPath) != null
+    } finally {
+        jar.close()
+    }
 }
 
 tasks.register('verifyHytaleServerJar') {
@@ -121,12 +155,24 @@ tasks.register('hytaleJar', Jar) {
     }
 }
 
+tasks.register('verifyHytaleJarMainClass') {
+    dependsOn tasks.named('hytaleJar')
+    doLast {
+        File hytaleJarFile = tasks.named('hytaleJar').get().archiveFile.get().asFile
+        if (!hytaleJarFile.exists()) {
+            throw new GradleException("[Colonists] Expected hytale jar at ${hytaleJarFile} but it does not exist.")
+        }
+        String mainClass = readMainClassFromJar(hytaleJarFile)
+        if (!jarContainsClass(hytaleJarFile, mainClass)) {
+            throw new GradleException("[Colonists] hytale jar is missing plugin main class ${mainClass}.")
+        }
+    }
+}
+
 tasks.register('installToHytaleMods', Copy) {
     if (canBuildHytaleJar) {
-        dependsOn tasks.named('hytaleJar')
-        from(tasks.named('hytaleJar').flatMap { it.archiveFile }) {
-            rename { "${project.name}-${project.version}.jar" }
-        }
+        dependsOn tasks.named('verifyHytaleJarMainClass')
+        from(tasks.named('hytaleJar').flatMap { it.archiveFile })
     }
     into(layout.buildDirectory.dir('tmp/installToHytaleMods-noop'))
 
@@ -150,11 +196,46 @@ tasks.register('installToHytaleMods', Copy) {
         if (!hytaleModsDir.exists()) {
             hytaleModsDir.mkdirs()
         }
+        def legacyArtifacts = fileTree(hytaleModsDir) {
+            include "${project.name}-*.jar"
+        }.files.findAll { !it.name.endsWith('-hytale.jar') }
+        legacyArtifacts.each { legacy ->
+            if (legacy.delete()) {
+                logger.lifecycle("[Colonists] Removed legacy non-hytale artifact: ${legacy.name}")
+            }
+        }
         into(hytaleModsDir)
         logger.lifecycle("[Colonists] installToHytaleMods -> ${hytaleModsDir}")
     }
 }
 
+tasks.register('verifyInstalledModJar') {
+    dependsOn tasks.named('installToHytaleMods')
+
+    onlyIf {
+        hytaleHomeDir != null && hytaleHomeDir.exists() && canBuildHytaleJar
+    }
+
+    doLast {
+        File installedJar = new File(hytaleModsDir, tasks.named('hytaleJar').get().archiveFile.get().asFile.name)
+        if (!installedJar.exists()) {
+            throw new GradleException("[Colonists] Installed hytale jar not found at ${installedJar}")
+        }
+
+        String mainClass = readMainClassFromJar(installedJar)
+        if (!jarContainsClass(installedJar, mainClass)) {
+            throw new GradleException("[Colonists] Installed mod jar missing plugin main class ${mainClass}")
+        }
+
+        def nonHytaleArtifacts = fileTree(hytaleModsDir) {
+            include "${project.name}-*.jar"
+        }.files.findAll { !it.name.endsWith('-hytale.jar') }
+        if (!nonHytaleArtifacts.isEmpty()) {
+            throw new GradleException("[Colonists] Found legacy non-hytale artifacts in mods dir: " + nonHytaleArtifacts*.name.join(', '))
+        }
+    }
+}
+
 tasks.named('build') {
-    finalizedBy 'installToHytaleMods'
+    finalizedBy 'verifyInstalledModJar'
 }

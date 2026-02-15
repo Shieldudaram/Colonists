@@ -1,0 +1,44 @@
+{
+  "Environments": [
+    "Env_Zone4_Wastes"
+  ],
+  "NPCs": [
+    {
+      "Weight": 30,
+      "SpawnBlockSet": "Soil",
+      "Id": "Skeleton_Burnt_Lancer",
+      "Flock": {
+        "Size": [
+          3,
+          5
+        ]
+      }
+    },
+    {
+      "Weight": 20,
+      "SpawnBlockSet": "Soil",
+      "Id": "Wraith",
+      "Flock": {
+        "Size": [
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "Weight": 30,
+      "SpawnBlockSet": "Soil",
+      "Id": "Toad_Rhino",
+      "Flock": {
+        "Size": [
+          2,
+          6
+        ]
+      }
+    }
+  ],
+  "DayTimeRange": [
+    6,
+    18
+  ]
+}

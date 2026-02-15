@@ -42,11 +42,12 @@ public final class ColonySimulationEngine {
     private final TelemetryService telemetry;
     private final Path saveDir;
     private final Deque<Runnable> pauseQueue;
+    private final boolean autosaveEnabled;
 
     private long tickCounter;
     private long lastAutosaveAt;
 
-    public ColonySimulationEngine(Path logsDir, Path saveDir, ColonyCallbacks callbacks) {
+    public ColonySimulationEngine(Path logsDir, Path saveDir, ColonyCallbacks callbacks, boolean autosaveEnabled) {
         this.state = new ColonyState();
         this.callbacks = callbacks;
         this.taskBroker = new TaskBroker();
@@ -61,6 +62,7 @@ public final class ColonySimulationEngine {
         this.telemetry = new TelemetryService(logsDir);
         this.saveDir = saveDir;
         this.pauseQueue = new ArrayDeque<>();
+        this.autosaveEnabled = autosaveEnabled;
         bootstrap();
     }
 
@@ -301,6 +303,7 @@ public final class ColonySimulationEngine {
     }
 
     private void maybeAutosave() {
+        if (!autosaveEnabled) return;
         if (state.worldTimeSec() - lastAutosaveAt >= ColonistsConstants.AUTOSAVE_SECONDS) {
             saveNow();
         }

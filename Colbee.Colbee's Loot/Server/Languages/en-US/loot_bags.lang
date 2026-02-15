@@ -1,0 +1,8 @@
+Common_Loot_Bag.name = Common Loot Bag
+Common_Loot_Bag.desc = Contains random seeds
+Uncommon_Loot_Bag.name = Uncommon Loot Bag
+Uncommon_Loot_Bag.desc = Contains random food items
+Rare_Loot_Bag.name = Rare Loot Bag
+Rare_Loot_Bag.desc = Contains random ingot bars & crystals
+Epic_Loot_Bag.name = Epic Loot Bag
+Epic_Loot_Bag.desc = Contains random weapons

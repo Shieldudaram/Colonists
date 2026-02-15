@@ -32,6 +32,7 @@ public final class ColonistsConfig {
     }
 
     public static final class Save {
+        public boolean autosaveEnabled = true;
         public int autosaveSeconds = 300;
         public int backupRotations = 5;
     }
