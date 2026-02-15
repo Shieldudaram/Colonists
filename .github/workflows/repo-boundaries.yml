@@ -1,0 +1,37 @@
+name: Repo Boundaries
+
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+  push:
+    branches:
+      - main
+      - dev
+
+permissions:
+  contents: read
+
+jobs:
+  devkit-boundary:
+    name: devkit-boundary
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure devkit ownership stays external
+        run: |
+          set -euo pipefail
+          matches="$(git ls-files | grep -E '^devkit/' || true)"
+
+          if [ -n "$matches" ]; then
+            echo "ERROR: devkit paths must not be tracked in Shieldudaram/Colonists."
+            echo "$matches"
+            echo "Remediation: git rm -r --cached devkit"
+            echo "Then ensure .gitignore includes: devkit/"
+            exit 1
+          fi
+
+          echo "OK: no devkit ownership violations found."
