@@ -6,21 +6,29 @@ run/
 .idea/
 *.iml
 
-# ignore a file
+# Local env/tooling files
 .env
 .rr_assist_global/
 .rr_assist/
 
+# Strict top-level directory policy:
+# ignore all root directories by default, then allowlist owned roots.
+/*/
+!/.github/
+!/.github/**
+!/Colonists/
+!/Colonists/**
+!/docker/
+!/docker/**
 
-# Local sibling projects kept in this workspace
+# Explicit sibling repo/workspace ignores for readability
 SimpleClaims-RR/
 hytale-template-plugin/
 DuelArena/
-
 pest-control/
 fight-caves/
 hytalecraft/
 devkit/
 CustomTree/
-
 Colbee.Colbee's Loot/
+scripts/
