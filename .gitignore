@@ -9,6 +9,7 @@ run/
 # ignore a file
 .env
 .rr_assist_global/
+.rr_assist/
 
 
 # Local sibling projects kept in this workspace
@@ -18,6 +19,7 @@ DuelArena/
 
 pest-control/
 fight-caves/
+hytalecraft/
 devkit/
 CustomTree/
 
