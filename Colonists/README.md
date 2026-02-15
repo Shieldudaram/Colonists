@@ -2,6 +2,8 @@
 
 This folder contains the implementation of the Colonists colony-simulation mod.
 
+Docker tooling for local workspace use is intentionally not tracked in this repository.
+
 ## Structure
 
 - `src/main/java` - core runtime, systems, command router, save/content loaders
