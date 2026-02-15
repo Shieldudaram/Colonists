@@ -14,6 +14,7 @@ This repository is organized as a local workspace containing multiple mod folder
 - `DuelArena/`
 - `fight-caves/` (standalone repo: https://github.com/Shieldudaram/fight-caves)
 - `devkit/` (standalone repo: https://github.com/Shieldudaram/Devkit)
+- `CustomTree/` (standalone repo: https://github.com/Shieldudaram/CustomTree)
 
 ## Build All Mods
 
@@ -33,4 +34,3 @@ Common usage:
   - `./scripts/build-all-mods.sh --require-hytale false`
 - Preview actions without running:
   - `./scripts/build-all-mods.sh --dry-run`
-- `CustomTree/` (standalone repo: https://github.com/Shieldudaram/CustomTree)
